@@ -1,7 +1,7 @@
 public class Train {
 
 	// Kann für die Ausgabe verwendet werden
-	private static final String LOCOMOTIVE = "<___|o|";
+	private static final String LOCOMOTIVE = "<___|BAUMTRAIN|o|";
 
 	private Waggon head;
 

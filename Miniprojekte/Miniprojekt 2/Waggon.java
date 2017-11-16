@@ -37,8 +37,8 @@ public class Waggon {
 	}
 
 	public String getName() {
-		return name;
-	}
+		return "|BAUM|" + name + "|";
+	} //@E.P. :)
 	
 	@Override
 	public String toString() {
