@@ -26,6 +26,7 @@ public class Matrix {
         }
     }
 
+
     public int[] getColumnVector(int col) {
 
         int[] columnvector = new int[this.values.length];

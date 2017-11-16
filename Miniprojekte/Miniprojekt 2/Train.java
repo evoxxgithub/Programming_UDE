@@ -57,7 +57,6 @@ public class Train {
 		int currentIndex = 0;
 		Waggon currentWaggon = this.head;
 		while (currentIndex < index && currentWaggon != null){
-			System.out.println("in goto while currentindex is: " + currentIndex);
 			currentWaggon = currentWaggon.getNext();
 			currentIndex++;
 		}
@@ -107,7 +106,6 @@ public class Train {
 		int lastIndex = this.getSize()-1;
 		Waggon temp = this.getLastWaggon();
 		for (int i = this.getSize()-2; i >= 0; i--) {
-			System.out.println("i is: " + i);
 			Waggon current = this.getWaggonAt(i);
 			temp.setNext(current);
 			temp = current;
