@@ -111,6 +111,7 @@ public class Koenigreich {
         } else {
             if (rightAfterPersonIsNull) superPerson.setLinks(person.getLinks());
             else {
+
                 superPerson.setLinks(person.getRechts());
                 person.getRechts().setLinks(person.getLinks());
             }
