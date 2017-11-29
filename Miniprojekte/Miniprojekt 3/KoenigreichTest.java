@@ -55,7 +55,7 @@ public class KoenigreichTest {
         Assertions.assertEquals(horst, constructedReich.spitze.getLinks().getLinks());
         Assertions.assertEquals(mueller, constructedReich.spitze.getLinks().getLinks().getLinks());
         constructedReich.geburt(nic_the_second_king);
-        Assertions.assertTrue(Arrays.equals(new Person[] {}, constructedReich.suche("Nic", Rang.KOENIG)));
+        Assertions.assertTrue(Arrays.equals(null, constructedReich.suche("Nic", Rang.KOENIG)));
 
     }
 

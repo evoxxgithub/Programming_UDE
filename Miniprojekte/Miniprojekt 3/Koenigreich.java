@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class Koenigreich {
 
@@ -16,10 +15,10 @@ public class Koenigreich {
 	public void geburt(Person person)
 	{
 		//Bitte hier Code einfuegen.
-        if (person != null && person.getRang() != Rang.KOENIG) this.sortIntoKingdomTree(person);
+        if (person != null && person.getRang() != Rang.KOENIG) this.sortUpwardsIntoTree(person);
 	}
 
-    private void sortIntoKingdomTree(Person person) {
+    private void sortUpwardsIntoTree(Person person) {
 	    boolean personIsMale = person.getIstMaennlich();
 	    Person treeAfterSex = (personIsMale)? this.spitze.getLinks() : this.spitze.getRechts();
 
@@ -33,10 +32,10 @@ public class Koenigreich {
 	        if (personIsMale) this.spitze.setLinks(person);
 	        else this.spitze.setRechts(person);
         }
-        else this.sortAfterRank(person, treeAfterSex);
+        else this.sortUpwardsAfterRank(person, treeAfterSex);
     }
 
-    private void sortAfterRank(Person person, Person treeToPutInto) {
+    private void sortUpwardsAfterRank(Person person, Person treeToPutInto) {
 	    boolean putInRightSide = person.getRang().ordinal() == treeToPutInto.getRang().ordinal();
 	    Person nextStepInTree = (putInRightSide)? treeToPutInto.getRechts() : treeToPutInto.getLinks();
 	    if (nextStepInTree == null || nextStepInTree.getRang().ordinal() < person.getRang().ordinal()){
@@ -44,7 +43,7 @@ public class Koenigreich {
 	        if (putInRightSide) treeToPutInto.setRechts(person);
 	        else treeToPutInto.setLinks(person);
         }
-        else sortAfterRank(person, nextStepInTree);
+        else sortUpwardsAfterRank(person, nextStepInTree);
     }
 
     //Aufgabe 3
@@ -75,9 +74,10 @@ public class Koenigreich {
     //Aufgabe 4
 	public Person[] suche(String name, Rang rang)
 	{
+	    if (name == null && rang == null) return null;
 		//Bitte hier Code einfuegen.
-        ArrayList<Person> people = this.getPeople();
-        ArrayList<Person> filteredList = new ArrayList<>();
+        final ArrayList<Person> people = this.getPeople();
+        final ArrayList<Person> filteredList = new ArrayList<>();
 
         people.stream()
                 .filter(p -> name == null || p.getName().equals(name))
@@ -87,7 +87,8 @@ public class Koenigreich {
 
         Person[] searchResultArray = new Person[filteredList.size()];
         filteredList.toArray(searchResultArray);
-		return searchResultArray;
+        if (searchResultArray.length == 0) return null;
+		else return searchResultArray;
 	}	
 	
 	//Aufgabe 5
@@ -136,8 +137,44 @@ public class Koenigreich {
     //Aufgabe 6
 	public void revolution(Person person)
 	{
-		//Bitte hier Code einfuegen.
-	}
+	    Person[] all_persons = this.volkszaehlung();
+        for (Person p : all_persons) {
+            p.setLinks(null);
+            p.setRechts(null);
+        }
+        this.spitze = person;
+        for (Person p : all_persons) {
+            if (p != person) this.sortDownWardsIntoTree(p);
+        }
+    }
+
+    private void sortDownWardsIntoTree(Person person) {
+        boolean personIsMale = person.getIstMaennlich();
+        Person treeAfterSex = (personIsMale)? this.spitze.getLinks() : this.spitze.getRechts();
+
+        if (treeAfterSex == null) {
+            if (personIsMale) this.spitze.setLinks(person);
+            else this.spitze.setRechts(person);
+        }
+
+        else if (treeAfterSex.getRang().ordinal() > person.getRang().ordinal()) {
+            person.setLinks(treeAfterSex);
+            if (personIsMale) this.spitze.setLinks(person);
+            else this.spitze.setRechts(person);
+        }
+        else this.sortDownWardsAfterRank(person, treeAfterSex);
+    }
+
+    private void sortDownWardsAfterRank(Person person, Person treeToPutInto) {
+        boolean putInRightSide = person.getRang().ordinal() == treeToPutInto.getRang().ordinal();
+        Person nextStepInTree = (putInRightSide)? treeToPutInto.getRechts() : treeToPutInto.getLinks();
+        if (nextStepInTree == null || nextStepInTree.getRang().ordinal() > person.getRang().ordinal()){
+            person.setLinks(nextStepInTree);
+            if (putInRightSide) treeToPutInto.setRechts(person);
+            else treeToPutInto.setLinks(person);
+        }
+        else sortUpwardsAfterRank(person, nextStepInTree);
+    }
 
 	public static void main(String[] args)
 	{
