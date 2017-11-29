@@ -57,11 +57,15 @@ public class Koenigreich {
 	}
 
     private ArrayList<Person> getPeople() {
+
         ArrayList<Person> personList = new ArrayList<>();
+        if (this.spitze == null) return personList;
+
         personList.add(this.spitze);
 
         if (this.spitze.getLinks() != null) this.addTreeToVolkszaehlung(this.spitze.getLinks(), personList);
         if (this.spitze.getRechts() != null) this.addTreeToVolkszaehlung(this.spitze.getRechts(), personList);
+
         return personList;
     }
 
@@ -83,18 +87,21 @@ public class Koenigreich {
                 .filter(p -> name == null || p.getName().equals(name))
                 .filter( p -> rang == null || p.getRang() == rang)
                 .forEach(p -> filteredList.add(p));
-
-
+        for (Person person : filteredList) {
+            if (person == null) filteredList.remove(person);
+        }
+        if (filteredList.size() == 0) return null;
         Person[] searchResultArray = new Person[filteredList.size()];
         filteredList.toArray(searchResultArray);
-        if (searchResultArray.length == 0) return null;
-		else return searchResultArray;
+        return searchResultArray;
 	}	
 	
 	//Aufgabe 5
 	public void exekution(String name)
 	{
-        for (Person person : this.suche(name, null)) {
+	    Person[] all_personsWithName = this.suche(name, null);
+	    if (all_personsWithName == null) return;
+        for (Person person : all_personsWithName) {
             if (person.getRang() != Rang.KOENIG) this.execute(person);
         }
     }
