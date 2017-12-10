@@ -6,11 +6,11 @@ import java.util.Arrays;
 public class KoenigreichTest {
 
     private static Koenigreich createReich() {
-        Person dieter = new Person("dieter", Rang.FUERST, null, null, true);
-        Person annabell = new Person("annabell", Rang.FUERST, null, null, false);
-        Person anneliese = new Person("anneliese", Rang.FUERST, null, null, false);
-        Person mueller = new Person("mueller", Rang.ARBEITER, null, null, true);
-        Person horst = new Person("horst", Rang.BUERGER, null, null, true);
+        Buerger dieter = new Buerger("dieter", Rang.FUERST, null, null, true);
+        Buerger annabell = new Buerger("annabell", Rang.FUERST, null, null, false);
+        Buerger anneliese = new Buerger("anneliese", Rang.FUERST, null, null, false);
+        Buerger mueller = new Buerger("mueller", Rang.ARBEITER, null, null, true);
+        Buerger horst = new Buerger("horst", Rang.BUERGER, null, null, true);
 
         Koenigreich constructedReich = new Koenigreich("random_name");
         constructedReich.geburt(dieter);
@@ -33,12 +33,12 @@ public class KoenigreichTest {
     @Test
     public void geburtTest()
     {
-        Person dieter = new Person("dieter", Rang.FUERST, null, null, true);
-        Person annabell = new Person("annabell", Rang.FUERST, null, null, false);
-        Person anneliese = new Person("anneliese", Rang.FUERST, null, null, false);
-        Person mueller = new Person("mueller", Rang.ARBEITER, null, null, true);
-        Person horst = new Person("horst", Rang.BUERGER, null, null, true);
-        Person nic_the_second_king = new Person("Nic", Rang.KOENIG, null, null, true);
+        Buerger dieter = new Buerger("dieter", Rang.FUERST, null, null, true);
+        Buerger annabell = new Buerger("annabell", Rang.FUERST, null, null, false);
+        Buerger anneliese = new Buerger("anneliese", Rang.FUERST, null, null, false);
+        Buerger mueller = new Buerger("mueller", Rang.ARBEITER, null, null, true);
+        Buerger horst = new Buerger("horst", Rang.BUERGER, null, null, true);
+        Buerger nic_the_second_king = new Buerger("Nic", Rang.KOENIG, null, null, true);
 
         Koenigreich constructedReich = new Koenigreich("random_name");
 
@@ -63,11 +63,11 @@ public class KoenigreichTest {
     @Test
     public void volkszaehlungTest()
     {
-        Person dieter = new Person("dieter", Rang.FUERST, null, null, true);
-        Person annabell = new Person("annabell", Rang.FUERST, null, null, false);
-        Person anneliese = new Person("anneliese", Rang.FUERST, null, null, false);
-        Person mueller = new Person("mueller", Rang.ARBEITER, null, null, true);
-        Person horst = new Person("horst", Rang.BUERGER, null, null, true);
+        Buerger dieter = new Buerger("dieter", Rang.FUERST, null, null, true);
+        Buerger annabell = new Buerger("annabell", Rang.FUERST, null, null, false);
+        Buerger anneliese = new Buerger("anneliese", Rang.FUERST, null, null, false);
+        Buerger mueller = new Buerger("mueller", Rang.ARBEITER, null, null, true);
+        Buerger horst = new Buerger("horst", Rang.BUERGER, null, null, true);
 
         Koenigreich constructedReich = new Koenigreich("random_name");
         constructedReich.geburt(dieter);
@@ -77,7 +77,7 @@ public class KoenigreichTest {
         constructedReich.geburt(horst);
 
         final int size = 6;
-        Person[] all_persons = {constructedReich.spitze, dieter, horst, mueller, annabell, anneliese};
+        Buerger[] all_persons = {constructedReich.spitze, dieter, horst, mueller, annabell, anneliese};
 
         Assertions.assertArrayEquals(all_persons, constructedReich.volkszaehlung());
     }

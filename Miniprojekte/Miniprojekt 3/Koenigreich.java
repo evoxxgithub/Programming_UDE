@@ -2,25 +2,25 @@ import java.util.ArrayList;
 
 public class Koenigreich {
 
-	Person spitze;
+	Buerger spitze;
 
 	//Aufgabe 1
 	public Koenigreich(String koenig)
 	{
 		//Bitte hier Code einfuegen.
-		this.spitze = new Person(koenig, Rang.KOENIG, null, null, true);
+		this.spitze = new Buerger(koenig, Rang.KOENIG, null, null, true);
 	}
 		
 	//Aufgabe 2
-	public void geburt(Person person)
+	public void geburt(Buerger person)
 	{
 		//Bitte hier Code einfuegen.
         if (person != null && person.getRang() != Rang.KOENIG) this.sortUpwardsIntoTree(person);
 	}
 
-    private void sortUpwardsIntoTree(Person person) {
+    private void sortUpwardsIntoTree(Buerger person) {
 	    boolean personIsMale = person.getIstMaennlich();
-	    Person treeAfterSex = (personIsMale)? this.spitze.getLinks() : this.spitze.getRechts();
+	    Buerger treeAfterSex = (personIsMale)? this.spitze.getLinks() : this.spitze.getRechts();
 
 	    if (treeAfterSex == null) {
 	        if (personIsMale) this.spitze.setLinks(person);
@@ -35,9 +35,9 @@ public class Koenigreich {
         else this.sortUpwardsAfterRank(person, treeAfterSex);
     }
 
-    private void sortUpwardsAfterRank(Person person, Person treeToPutInto) {
+    private void sortUpwardsAfterRank(Buerger person, Buerger treeToPutInto) {
 	    boolean putInRightSide = person.getRang().ordinal() == treeToPutInto.getRang().ordinal();
-	    Person nextStepInTree = (putInRightSide)? treeToPutInto.getRechts() : treeToPutInto.getLinks();
+	    Buerger nextStepInTree = (putInRightSide)? treeToPutInto.getRechts() : treeToPutInto.getLinks();
 	    if (nextStepInTree == null || nextStepInTree.getRang().ordinal() < person.getRang().ordinal()){
 	        person.setLinks(nextStepInTree);
 	        if (putInRightSide) treeToPutInto.setRechts(person);
@@ -47,18 +47,18 @@ public class Koenigreich {
     }
 
     //Aufgabe 3
-	public Person[] volkszaehlung()
+	public Buerger[] volkszaehlung()
 	{
-        if (spitze == null) return new Person[] {};
+        if (spitze == null) return new Buerger[] {};
 
-        ArrayList<Person> personList = getPeople();
-        Person[] arrayToReturn = new Person[personList.size()];
+        ArrayList<Buerger> personList = getPeople();
+        Buerger[] arrayToReturn = new Buerger[personList.size()];
 		return personList.toArray(arrayToReturn);
 	}
 
-    private ArrayList<Person> getPeople() {
+    private ArrayList<Buerger> getPeople() {
 
-        ArrayList<Person> personList = new ArrayList<>();
+        ArrayList<Buerger> personList = new ArrayList<>();
         if (this.spitze == null) return personList;
 
         personList.add(this.spitze);
@@ -69,29 +69,29 @@ public class Koenigreich {
         return personList;
     }
 
-    private void addTreeToVolkszaehlung(Person currentTree, ArrayList<Person> personList) {
+    private void addTreeToVolkszaehlung(Buerger currentTree, ArrayList<Buerger> personList) {
 	    personList.add(currentTree);
 	    if (currentTree.getRechts() != null) addTreeToVolkszaehlung(currentTree.getRechts(), personList);
 	    if (currentTree.getLinks() != null) addTreeToVolkszaehlung(currentTree.getLinks(), personList);
     }
 
     //Aufgabe 4
-	public Person[] suche(String name, Rang rang)
+	public Buerger[] suche(String name, Rang rang)
 	{
 	    if (name == null && rang == null) return null;
 		//Bitte hier Code einfuegen.
-        final ArrayList<Person> people = this.getPeople();
-        final ArrayList<Person> filteredList = new ArrayList<>();
+        final ArrayList<Buerger> people = this.getPeople();
+        final ArrayList<Buerger> filteredList = new ArrayList<>();
 
         people.stream()
                 .filter(p -> name == null || p.getName().equals(name))
                 .filter( p -> rang == null || p.getRang() == rang)
                 .forEach(p -> filteredList.add(p));
-        for (Person person : filteredList) {
+        for (Buerger person : filteredList) {
             if (person == null) filteredList.remove(person);
         }
         if (filteredList.size() == 0) return null;
-        Person[] searchResultArray = new Person[filteredList.size()];
+        Buerger[] searchResultArray = new Buerger[filteredList.size()];
         filteredList.toArray(searchResultArray);
         return searchResultArray;
 	}	
@@ -99,15 +99,15 @@ public class Koenigreich {
 	//Aufgabe 5
 	public void exekution(String name)
 	{
-	    Person[] all_personsWithName = this.suche(name, null);
+	    Buerger[] all_personsWithName = this.suche(name, null);
 	    if (all_personsWithName == null) return;
-        for (Person person : all_personsWithName) {
+        for (Buerger person : all_personsWithName) {
             if (person.getRang() != Rang.KOENIG) this.execute(person);
         }
     }
 
-    private void execute(Person person) {
-	    Person superPerson = searchForSuper(person);
+    private void execute(Buerger person) {
+	    Buerger superPerson = searchForSuper(person);
 	    boolean rightAfterPersonIsNull = person.getRechts() == null;
         boolean personIsRightOfSuper = superPerson.getRechts() == person;
         if (personIsRightOfSuper) {
@@ -126,38 +126,38 @@ public class Koenigreich {
         }
     }
 
-    private Person searchForSuper(Person person) {
+    private Buerger searchForSuper(Buerger person) {
 
 	    return searchForSuperInTree(person, this.spitze);
     }
 
-    private Person searchForSuperInTree(Person person, Person currentTree) {
+    private Buerger searchForSuperInTree(Buerger person, Buerger currentTree) {
 	    if (currentTree == null) return null;
 	    if (currentTree.getRechts() == person || currentTree.getLinks() == person) return currentTree;
 
-        Person foundInLeftTree = searchForSuperInTree(person, currentTree.getLinks());
-        Person foundInRightTree = searchForSuperInTree(person, currentTree.getRechts());
+        Buerger foundInLeftTree = searchForSuperInTree(person, currentTree.getLinks());
+        Buerger foundInRightTree = searchForSuperInTree(person, currentTree.getRechts());
 
         return (foundInLeftTree == null)? foundInRightTree : foundInLeftTree;
     }
 
     //Aufgabe 6
-	public void revolution(Person person)
+	public void revolution(Buerger person)
 	{
-	    Person[] all_persons = this.volkszaehlung();
-        for (Person p : all_persons) {
+	    Buerger[] all_persons = this.volkszaehlung();
+        for (Buerger p : all_persons) {
             p.setLinks(null);
             p.setRechts(null);
         }
         this.spitze = person;
-        for (Person p : all_persons) {
+        for (Buerger p : all_persons) {
             if (p != person) this.sortDownWardsIntoTree(p);
         }
     }
 
-    private void sortDownWardsIntoTree(Person person) {
+    private void sortDownWardsIntoTree(Buerger person) {
         boolean personIsMale = person.getIstMaennlich();
-        Person treeAfterSex = (personIsMale)? this.spitze.getLinks() : this.spitze.getRechts();
+        Buerger treeAfterSex = (personIsMale)? this.spitze.getLinks() : this.spitze.getRechts();
 
         if (treeAfterSex == null) {
             if (personIsMale) this.spitze.setLinks(person);
@@ -172,9 +172,9 @@ public class Koenigreich {
         else this.sortDownWardsAfterRank(person, treeAfterSex);
     }
 
-    private void sortDownWardsAfterRank(Person person, Person treeToPutInto) {
+    private void sortDownWardsAfterRank(Buerger person, Buerger treeToPutInto) {
         boolean putInRightSide = person.getRang().ordinal() == treeToPutInto.getRang().ordinal();
-        Person nextStepInTree = (putInRightSide)? treeToPutInto.getRechts() : treeToPutInto.getLinks();
+        Buerger nextStepInTree = (putInRightSide)? treeToPutInto.getRechts() : treeToPutInto.getLinks();
         if (nextStepInTree == null || nextStepInTree.getRang().ordinal() > person.getRang().ordinal()){
             person.setLinks(nextStepInTree);
             if (putInRightSide) treeToPutInto.setRechts(person);
@@ -186,30 +186,30 @@ public class Koenigreich {
 	public static void main(String[] args)
 	{
 		Koenigreich k = new Koenigreich("Arthur");
-		Person array[] = new Person[15];
+		Buerger array[] = new Buerger[15];
 		
-		array[0] = new Person("Andi", Rang.BUERGER, null, null, true);
-		array[1] = new Person("Gabrielle", Rang.FUERST, null, null, false);		
-		array[2] = new Person("Sigfried", Rang.FUERST, null, null, true);		
-		array[3] = new Person("Anton", Rang.FUERST, null, null, true);
-		array[4] = new Person("Sigfried", Rang.BUERGER, null, null, true);
-		array[5] = new Person("Fiona", Rang.FUERST, null, null, false);
-		array[6] = new Person("Richard", Rang.FUERST, null, null, true);
-		array[7] = new Person("Antonia", Rang.FUERST, null, null, false);
-		array[8] = new Person("Peter", Rang.BUERGER, null, null, true);		
-		array[9] = new Person("Klee", Rang.ARBEITER, null, null, true);
-		array[10] = new Person("Susi", Rang.ARBEITER, null, null, false);
-		array[11] = new Person("Nelli", Rang.ARBEITER, null, null, false);
-		array[12] = new Person("Sigi", Rang.ARBEITER, null, null, true);
-		array[13] = new Person("Pia", Rang.ARBEITER, null, null, false);				
-		array[14] = new Person("Susanne", Rang.BUERGER, null, null, false);		
+		array[0] = new Buerger("Andi", Rang.BUERGER, null, null, true);
+		array[1] = new Buerger("Gabrielle", Rang.FUERST, null, null, false);
+		array[2] = new Buerger("Sigfried", Rang.FUERST, null, null, true);
+		array[3] = new Buerger("Anton", Rang.FUERST, null, null, true);
+		array[4] = new Buerger("Sigfried", Rang.BUERGER, null, null, true);
+		array[5] = new Buerger("Fiona", Rang.FUERST, null, null, false);
+		array[6] = new Buerger("Richard", Rang.FUERST, null, null, true);
+		array[7] = new Buerger("Antonia", Rang.FUERST, null, null, false);
+		array[8] = new Buerger("Peter", Rang.BUERGER, null, null, true);
+		array[9] = new Buerger("Klee", Rang.ARBEITER, null, null, true);
+		array[10] = new Buerger("Susi", Rang.ARBEITER, null, null, false);
+		array[11] = new Buerger("Nelli", Rang.ARBEITER, null, null, false);
+		array[12] = new Buerger("Sigi", Rang.ARBEITER, null, null, true);
+		array[13] = new Buerger("Pia", Rang.ARBEITER, null, null, false);
+		array[14] = new Buerger("Susanne", Rang.BUERGER, null, null, false);
 		
 		for(int i=0; i<array.length;i++)
 		{
 			k.geburt(array[i]);
 		}
 		
-		Person[] array2 = k.volkszaehlung();
+		Buerger[] array2 = k.volkszaehlung();
 		
 		for(int i=0; i<array2.length;i++)
 		{

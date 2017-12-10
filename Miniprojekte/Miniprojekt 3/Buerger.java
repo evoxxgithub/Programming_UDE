@@ -1,13 +1,13 @@
-public class Person {
+public class Buerger {
 	
 	private String name;
 	private Rang rang;
 	private String rangname;
 	private boolean istmaennlich;
-	private Person linkerNf;
-	private Person rechterNf;
+	private Buerger linkerNf;
+	private Buerger rechterNf;
 	
-	Person(String name, Rang rang, Person linkerNf, Person rechterNf, boolean istmaennlich){
+	Buerger(String name, Rang rang, Buerger linkerNf, Buerger rechterNf, boolean istmaennlich){
 		this.name = name;
 		this.rang = rang;
 		this.rangname = rang.toString();
@@ -24,11 +24,11 @@ public class Person {
 		return rang;
 	}
 	
-	public Person getLinks(){
+	public Buerger getLinks(){
 		return linkerNf;
 	}
 	
-	public Person getRechts(){
+	public Buerger getRechts(){
 		return rechterNf;
 	}
 	
@@ -37,11 +37,11 @@ public class Person {
 		return istmaennlich;
 	}
 	
-	public void setLinks(Person linkerNf){
+	public void setLinks(Buerger linkerNf){
 		this.linkerNf = linkerNf;
 	}
 	
-	public void setRechts(Person rechterNf){
+	public void setRechts(Buerger rechterNf){
 		this.rechterNf = rechterNf;
 	}
 
