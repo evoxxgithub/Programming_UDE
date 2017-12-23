@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Proggen_Komplettlösung.iml" filepath="$PROJECT_DIR$/Proggen_Komplettlösung.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Programming WS16717 Code/Programming WS16717 Code.iml" filepath="$PROJECT_DIR$/Programming WS16717 Code/Programming WS16717 Code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UDE-Data-and-Solutions.iml" filepath="$PROJECT_DIR$/UDE-Data-and-Solutions.iml" />
     </modules>
   </component>
 </project>
