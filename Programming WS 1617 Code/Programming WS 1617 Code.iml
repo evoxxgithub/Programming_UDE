@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Übungen/Übung 3" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Übungen/Übung 4" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Übungen/Übung 5" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Übungen/Übung 6" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Übungen/Übung 7" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Übungen/Übung 8" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Übungen/Übung 9" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Sonstiges_Programmierung" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Miniprojekte/Miniprojekt 1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Miniprojekte/Miniprojekt 2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Miniprojekte/Miniprojekt 3" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Miniprojekte/Miniprojekt 4" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
