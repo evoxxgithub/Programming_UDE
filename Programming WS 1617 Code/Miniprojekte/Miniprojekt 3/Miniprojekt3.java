@@ -263,6 +263,7 @@ public class Miniprojekt3 { /*
 		for (int is = 0; is < skigebiet.length; is++) {
 			skigebiet[is].setzeAusgehendeLifte(ausgLifte[is]);
 			skigebiet[is].setzeAusgehendePisten(ausgPisten[is]);
+
 		}
 		
 		// erstelle Miniprojekt
