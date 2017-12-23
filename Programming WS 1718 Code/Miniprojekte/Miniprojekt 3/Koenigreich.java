@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Koenigreich {
 
@@ -78,13 +79,16 @@ public class Koenigreich {
     //Aufgabe 4
 	public Buerger[] suche(String name, Rang rang)
 	{
+
 	    if (name == null && rang == null) return null;
+
+
 		//Bitte hier Code einfuegen.
         final ArrayList<Buerger> people = this.getPeople();
         final ArrayList<Buerger> filteredList = new ArrayList<>();
 
         people.stream()
-                .filter(p -> name == null || p.getName().equals(name))
+				.filter(p -> name == null || p.getName().equals(name))
                 .filter( p -> rang == null || p.getRang() == rang)
                 .forEach(p -> filteredList.add(p));
         for (Buerger person : filteredList) {

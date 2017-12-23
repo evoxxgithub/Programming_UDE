@@ -46,7 +46,7 @@ public class Klasse {
         rueckgabe = rueckgabe + "\"";
         rueckgabe = rueckgabe + string;
         rueckgabe = rueckgabe + "\"";
-        rueckgabe = rueckgabe + ".";
+        rueckgabe = rueckgabe + "";
         return rueckgabe;
     }
 }

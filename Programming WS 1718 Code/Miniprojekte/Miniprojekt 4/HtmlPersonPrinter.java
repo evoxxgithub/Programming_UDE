@@ -4,7 +4,7 @@ public class HtmlPersonPrinter extends PersonPrinter{
 
         LIST_START("<ul>\n"), ITEM_START("<li>"), ITEM_END("</li>\n"), LIST_END("</ul>\n");
 
-        String value;
+        private String value;
 
         Wrappers(String value) {
             this.value = value;
@@ -22,7 +22,7 @@ public class HtmlPersonPrinter extends PersonPrinter{
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.append(Wrappers.LIST_START);
+        stringBuilder.append("ul>\n");
         for (Person person : items) {
             stringBuilder.append(Wrappers.ITEM_START);
             stringBuilder.append(person.getName());
