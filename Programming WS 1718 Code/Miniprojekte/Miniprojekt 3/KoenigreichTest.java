@@ -2,7 +2,8 @@ import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
 
-
+// if this gives you errors just a) Install JUnit 5 and add it to classpath
+// or b) just delete this file
 public class KoenigreichTest {
 
     private static Koenigreich createReich() {
