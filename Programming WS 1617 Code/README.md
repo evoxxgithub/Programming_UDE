@@ -16,3 +16,4 @@ programmiert ist.
 
 * You can find the according exercise sheets in the dropbox
 * Some code is commented out because i have split one class into one for every exercise-part. Just read it as it is.
+* All code in here has been rated as free of error (100%) by Jack.
