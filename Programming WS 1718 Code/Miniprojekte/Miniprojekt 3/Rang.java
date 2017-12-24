@@ -5,7 +5,7 @@ public enum Rang {
 	BUERGER,
 	FUERST,
 	KOENIG;
-	
+
 	public String toString() {
 		return this.name();
 	}

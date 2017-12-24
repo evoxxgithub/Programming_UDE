@@ -1,0 +1,3 @@
+C:/Users/Tobias/CLionProjects/BS_Blatt1/cmake-build-debug/CMakeFiles/BS_Blatt1.dir
+C:/Users/Tobias/CLionProjects/BS_Blatt1/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Tobias/CLionProjects/BS_Blatt1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

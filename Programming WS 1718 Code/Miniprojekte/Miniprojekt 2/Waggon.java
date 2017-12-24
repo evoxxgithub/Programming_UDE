@@ -2,11 +2,11 @@
 public class Waggon {
 
 	private Waggon next;
-	
+
 	private int capacity;
 	private int passengers;
 	private final String name;
-	
+
 	public Waggon(String name, int capacity) {
 		this.name = name;
 		this.capacity = capacity;
@@ -39,7 +39,7 @@ public class Waggon {
 	public String getName() {
 		return "|BAUM|" + name + "|";
 	} //@E.P. :)
-	
+
 	@Override
 	public String toString() {
 		return name;

@@ -1,12 +1,12 @@
 public class Buerger {
-	
+
 	private String name;
 	private Rang rang;
 	private String rangname;
 	private boolean istmaennlich;
 	private Buerger linkerNf;
 	private Buerger rechterNf;
-	
+
 	Buerger(String name, Rang rang, Buerger linkerNf, Buerger rechterNf, boolean istmaennlich){
 		this.name = name;
 		this.rang = rang;
@@ -15,32 +15,32 @@ public class Buerger {
 		this.rechterNf = rechterNf;
 		this.istmaennlich = istmaennlich;
 	}
-	
+
 	public String getName(){
 		return name;
 	}
-	
+
 	public Rang getRang(){
 		return rang;
 	}
-	
+
 	public Buerger getLinks(){
 		return linkerNf;
 	}
-	
+
 	public Buerger getRechts(){
 		return rechterNf;
 	}
-	
+
 	public boolean getIstMaennlich()
 	{
 		return istmaennlich;
 	}
-	
+
 	public void setLinks(Buerger linkerNf){
 		this.linkerNf = linkerNf;
 	}
-	
+
 	public void setRechts(Buerger rechterNf){
 		this.rechterNf = rechterNf;
 	}
