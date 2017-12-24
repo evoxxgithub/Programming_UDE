@@ -1,16 +1,10 @@
 # **Programming WS 1617 Code** #
 
 
-### *Zu findender Code:* ###
+### *Code you can find in here:* ###
 
-* Uebungen aus Programmierung
-* Miniprojekte aus Programmierung
-
-### *Zu beachten:* ###
-
-* Es kann nicht gewaehrleistet werden, dass der hier zur Verfuegung gestellte Code fehlerfrei und/oder richtig/gut 
-programmiert ist.
-* Auch wird nicht garantiert, dass jedes Projekt online gestellt wird.
+* Exercises
+* All 4 Miniprojects
 
 ### *Additional Info* ###
 
