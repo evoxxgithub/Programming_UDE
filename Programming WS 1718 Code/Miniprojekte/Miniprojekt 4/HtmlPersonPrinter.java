@@ -21,13 +21,14 @@ public class HtmlPersonPrinter extends PersonPrinter{
     public void printNames(Person[] items) {
 
         StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append("ul>\n");
+        stringBuilder.append(Wrappers.LIST_START);
         for (Person person : items) {
             stringBuilder.append(Wrappers.ITEM_START);
             stringBuilder.append(person.getName());
             stringBuilder.append(Wrappers.ITEM_END);
+
         }
+
         stringBuilder.append(Wrappers.LIST_END);
 
         System.out.println(stringBuilder.toString());
