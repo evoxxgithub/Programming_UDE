@@ -2,4 +2,4 @@
 
 ##### Info about how the code has been rated:
 
-* Übung 9: ?/5
+* Übung 9: 3/3 
