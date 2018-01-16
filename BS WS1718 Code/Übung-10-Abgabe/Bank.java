@@ -1,4 +1,4 @@
-import java.util.HashMap;
+/*import java.util.HashMap;
 
 public class Bank {
     HashMap<Integer, Account> accounts = new HashMap<Integer, Account>();
@@ -30,6 +30,7 @@ public class Bank {
          * make a circular-wait impossible.
          *
          */
+/*
 
         if (source<destination){
             s.doLock();
@@ -41,7 +42,7 @@ public class Bank {
 
         /*
          *  TODO: Eigenen Code hier einf?gen!
-         */
+         *
 
         if (s.getBalance() >= amount) {
             try {
@@ -88,3 +89,4 @@ public class Bank {
         System.out.println("Total money on bank: " + GetTotalMoney());
     }
 }
+*/

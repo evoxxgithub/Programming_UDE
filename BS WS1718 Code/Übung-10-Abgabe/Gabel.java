@@ -1,4 +1,4 @@
-class Gabel {
+/*class Gabel {
     public static final Object LOCK = new Object();
     public boolean verfuegbar = true;
 
@@ -9,4 +9,4 @@ public void nimmAuf() {
 public void legeZurueck() {
         verfuegbar = true; //lege Gabel zurück
         }
-}
+}*/

@@ -1,4 +1,4 @@
-class Philosoph extends Thread {
+/*class Philosoph extends Thread {
 
     private boolean fuerImmer = true;
     private Gabel linkeGabel, rechteGabel;
@@ -36,4 +36,4 @@ class Philosoph extends Thread {
         public void iss() {
 
         }
-}
+}*/
