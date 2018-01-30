@@ -69,7 +69,8 @@ public class BinaryTree {
 
 	public void insert(int number){
 		BinaryTreeNode nodeToInsert = new BinaryTreeNode(number);
-		sortIntoTree(top, nodeToInsert);
+		if (top == null) top = nodeToInsert;
+		else sortIntoTree(top, nodeToInsert);
 	}
 
 
@@ -114,8 +115,8 @@ public class BinaryTree {
 			// die spitze ist hier größer, wir sortieren links/am kleineren element ein
 			if (spitze.smaller == null) spitze.smaller = nodeToInsert; // wir wären hier fertig mit einsortieren
 			else sortIntoTree(spitze.smaller, nodeToInsert); // wir sortieren in den linken teil des baumes ein.
-		} else {
-			// die spitze ist hier kleiner oder gleich groß, wir sortieren rechts/am groesseren element ein
+		} else if (spitze.number < nodeToInsert.number) {
+			// die spitze ist hier kleiner, wir sortieren rechts/am groesseren element ein
 			if (spitze.larger == null) spitze.larger = nodeToInsert; //wir wären hier fertig mit einsortieren
 			else sortIntoTree(spitze.larger, nodeToInsert); // wir sortieren in den rechten Teil des Baumes ein.
 		}
@@ -156,15 +157,65 @@ public class BinaryTree {
 	 */
 	
 	public int sumOfElements(){
-		return 0;
+		if (top == null) return 0;
+		else return getSumOfTree(top);
 	}
-	
+
+	private int getSumOfTree(BinaryTreeNode node) {
+		if (node == null) return 0;
+		else return node.number + getSumOfTree(node.smaller) + getSumOfTree(node.larger);
+	}
+
 	/*
 	 * ENDE des zu implementierenden Bereichs
 	 */
 	
 	public void deleteNumber(int number){
+		if (top == null) return;
+		if (top.number != number) deleteNumberInTree(top, number);
+		else deleteTop();
+	}
 
+	private void deleteTop() {
+		if (top.larger != null) {
+			BinaryTreeNode leftTreePart = top.smaller;
+			top = top.larger;
+			if(leftTreePart != null) hangOnNextFreePart(leftTreePart, top);
+		} else top = top.smaller;
+	}
+
+	private void deleteNumberInTree(BinaryTreeNode node, int number) {
+			if (node.number > number) {
+				if (node.smaller == null) return;
+				if (node.smaller.number == number) deleteSmallerOf(node);
+				else deleteNumberInTree(node.smaller, number);
+		} else {
+				if (node.larger == null) return;
+				if (node.larger.number == number) deleteLargerOf(node);
+				else deleteNumberInTree(node.larger, number);
+			}
+	}
+
+	private void deleteSmallerOf(BinaryTreeNode node) {
+		if (node.smaller.larger != null) {
+			BinaryTreeNode leftTreePart = node.smaller.smaller;
+			node.smaller = node.smaller.larger;
+			if (leftTreePart != null) hangOnNextFreePart(leftTreePart, node.smaller);
+		} else node.smaller = node.smaller.smaller;
+	}
+
+	private void deleteLargerOf(BinaryTreeNode node) {
+		if (node.larger.larger != null) {
+			BinaryTreeNode leftTreePart = node.larger.smaller;
+			node.larger = node.larger.larger;
+			if (leftTreePart != null) hangOnNextFreePart(leftTreePart, node.larger);
+		} else node.larger = node.larger.smaller;
+
+	}
+
+	private void hangOnNextFreePart(BinaryTreeNode leftTreePart, BinaryTreeNode rightTreePart) {
+		if (rightTreePart.smaller == null) rightTreePart.smaller = leftTreePart;
+		else hangOnNextFreePart(leftTreePart, rightTreePart.smaller);
 	}
 
 }
